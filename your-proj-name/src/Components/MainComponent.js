@@ -7,15 +7,16 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 
+import {fetchTest} from '../Redux/ActionCreators';
+
 const mapStateToProps =  state => {
     return {
-       /* props : state */
-        test: state.test
+        server: state.server
     } 
   }
 
-  const mapDispatchToProps = (dispatch) => ({
- 
+const mapDispatchToProps = (dispatch) => ({
+    fetchTest: () => {dispatch(fetchTest())},
 });
 
 class Main extends Component {
@@ -24,22 +25,16 @@ class Main extends Component {
     }
 
     componentDidMount() {
- 
+        /* on component mount do */
+        this.props.fetchTest();
     }
 
     render() {
-
-        const HomePage = () => {
-            return(<Home
-            />);
-        }
-
        return (
         <div>
             <Header/>
                 <Switch>
-                    <Route path="/home" component={HomePage} />
-                    {/*<Route exact path="/menu"   component={()=> <Menu dishes={this.props.dishes} /> } />*/}
+                    <Route path="/home" component={()=> <Home server={this.props.server}/> } />
                     <Redirect to="/home"/>
                 </Switch>
             <Footer/>
