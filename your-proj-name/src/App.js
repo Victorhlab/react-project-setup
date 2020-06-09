@@ -3,6 +3,7 @@ import {BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import {ConfigureStore} from './Redux/configureStore';
 import './App.css';
+import 'font-awesome/css/font-awesome.min.css'
 import Main from './Components/MainComponent';
 
 const store = ConfigureStore();
